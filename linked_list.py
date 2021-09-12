@@ -59,6 +59,30 @@ class LinkedList:
             itr = itr.next
         itr.next = Node(value, itr.next)
 
+    def insert_after_value(self, data_after, data_to_insert):
+        if self.head is None:
+            print('Linked list is empty')
+        itr = self.head
+        while itr:
+            if itr.data == data_after:
+                itr.next = Node(data_to_insert, itr.next)
+                break
+            itr = itr.next
+
+
+    def remove_by_value(self, data_to_remove):
+        if self.head is None:
+            return
+        if self.head.data == data_to_remove:
+            self.head = self.head.next
+            return
+        itr = self.head
+        while itr.next:
+            if itr.next.data == data_to_remove:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+
     def print_list(self):
         if self.head is None:
             print("Linked list is empty")
@@ -75,5 +99,6 @@ if __name__ == "__main__":
     ll = LinkedList()
     ll.insert_values([90, 45, 24, 14, 56, 46, 25, "mango"])
     ll.print_list()
-    ll.insert_at(3, "hahahaah")
+
+    ll.remove_by_value("oijero")
     ll.print_list()
